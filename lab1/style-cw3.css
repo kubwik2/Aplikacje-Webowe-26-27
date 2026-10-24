@@ -1,0 +1,20 @@
+html {
+  background-color: #8be8e0;
+  height: 100vh;
+}
+
+body {
+  height: 100vh;
+  margin: 1;
+}
+.square_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 20px;
+  width: fit-content;
+}
+
+.square {
+  height: 100px;
+  width: 100px;
+}
