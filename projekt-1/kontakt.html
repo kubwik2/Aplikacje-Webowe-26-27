@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Żeglowanie jako hobby</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo">Pod Żaglami</div>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="kontakt.html" class="active">Kontakt</a>
+        <button id="theme-toggle" aria-label="Zmień motyw">🌙</button>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section class="contact-section container">
+        <h2>Kontakt</h2>
+        <p>
+          Jeśli masz pytania dotyczące żeglarstwa, chcesz podzielić się swoimi
+          doświadczeniami lub po prostu porozmawiać o tej pasji, zapraszam do
+          kontaktu. Chętnie odpowiem na Twoje wiadomości i podzielę się moją
+          wiedzą oraz doświadczeniem.
+        </p>
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="form-group">
+            <label for="email">Adres e-mail:</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Wprowadź swój adres e-mail"
+            />
+            <span class="error-message" id="email-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="subject">Temat Wiadomości:</label>
+            <select id="subject" name="subject">
+              <option value="">-- Wybierz temat z listy --</option>
+              <option value="rejs">Wspólny rejs i poszukiwanie załogi</option>
+              <option value="patent">Pytanie o kursy i patent żeglarski</option>
+              <option value="czarter">Polecane trasy i czarter jachtu</option>
+              <option value="inne">Inny temat</option>
+            </select>
+            <span class="error-message" id="subject-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="message">Wiadomość:</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Wprowadź swoją wiadomość"
+            ></textarea>
+            <span class="error-message" id="message-error"></span>
+          </div>
+          <div class="form-actions">
+            <input type="submit" value="Wyślij" class="btn btn-submit" />
+          </div>
+          <div id="form-status" class="form-status"></div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Żeglowanie - sezon 2026 <strong>Jakub Kałużny</strong></p>
+      <div id="live-clock" class="clock-display">Czas rejsowy: --:--:--</div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
