@@ -20,3 +20,78 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+const contactForm = document.getElementById("contact-form");
+
+if (contactForm) {
+  const emailInput = document.getElementById("email");
+  const subjectSelect = document.getElementById("subject");
+  const messageTextarea = document.getElementById("message");
+
+  const emailError = document.getElementById("email-error");
+  const subjectError = document.getElementById("subject-error");
+  const messageError = document.getElementById("message-error");
+  const formStatus = document.getElementById("form-status");
+
+  const savedEmail = localStorage.getItem("draft_email");
+  const savedMessage = localStorage.getItem("draft_message");
+
+  if (savedEmail) emailInput.value = savedEmail;
+  if (savedMessage) messageTextarea.value = savedMessage;
+
+  emailInput.addEventListener("input", () => {
+    localStorage.setItem("draft_email", emailInput.value);
+  });
+
+  messageTextarea.addEventListener("input", () => {
+    localStorage.setItem("draft_message", messageTextarea.value);
+  });
+
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let isValid = true;
+    emailError.textContent = "";
+    subjectError.textContent = "";
+    messageError.textContent = "";
+    formStatus.className = "form-status";
+    formStatus.style.display = "none";
+
+    const emailValue = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailValue) {
+      emailError.textContent = "Podanie adresu e-mail jest wymagane.";
+      isValid = false;
+    } else if (!emailRegex.test(emailValue)) {
+      emailError.textContent =
+        "Wprowadź poprawny adres e-mail (np. example@student.agh.edu.pl).";
+      isValid = false;
+    }
+
+    if (!subjectSelect.value) {
+      subjectError.textContent = "Proszę wybrać temat wiadomości z listy.";
+      isValid = false;
+    }
+
+    const messageValue = messageTextarea.value.trim();
+    if (!messageValue) {
+      messageError.textContent = "Treść wiadomości nie może być pusta.";
+      isValid = false;
+    } else if (messageValue.length < 10) {
+      messageError.textContent =
+        "Wiadomość musi zawierać co najmniej 10 znaków.";
+      isValid = false;
+    }
+
+    if (isValid) {
+      formStatus.textContent = "Twoja wiadomość została pomyślnie wysłana.";
+      formStatus.className = "form-status success";
+      formStatus.style.display = "block";
+
+      contactForm.reset();
+      localStorage.removeItem("draft_email");
+      localStorage.removeItem("draft_message");
+    }
+  });
+}
