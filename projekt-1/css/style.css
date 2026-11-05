@@ -1,0 +1,17 @@
+:root {
+  --primary-navy: #0b2545;
+  --ocean-blue: #134074;
+  --sea-foam: #8da9c4;
+  --sand-bg: #eef4f8;
+  --accent-gold: #f4a261;
+  --text-dark: #1d2d44;
+  --text-light: #ffffff;
+}
+
+body.dark-theme {
+  --primary-navy: #05101f;
+  --ocean-blue: #0b2545;
+  --sand-bg: #111a24;
+  --text-dark: #f0f4f8;
+  --text-light: #ffffff;
+}
