@@ -408,3 +408,52 @@ p {
     padding: 1.5rem;
   }
 }
+/* dark theme */
+#theme-toggle {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+#theme-toggle:hover {
+  transform: scale(1.08);
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--accent-gold);
+}
+.hero-section p {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3 {
+  color: #ffffff;
+}
+
+body.dark-theme .btn {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+body.dark-theme .btn:hover {
+  background-color: #ffffff;
+  color: #0b2545;
+}
+
+body.dark-theme .faq-question:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-theme select option {
+  background-color: var(--card-bg);
+  color: var(--text-dark);
+}

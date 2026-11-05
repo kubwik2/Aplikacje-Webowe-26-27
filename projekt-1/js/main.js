@@ -95,3 +95,23 @@ if (contactForm) {
     }
   });
 }
+//dark theme
+const themeToggleBtn = document.getElementById("theme-toggle");
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme === "dark") {
+  document.body.classList.add("dark-theme");
+  if (themeToggleBtn) themeToggleBtn.textContent = "☀️";
+}
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme");
+    const isDark = document.body.classList.contains("dark-theme");
+    if (isDark) {
+      themeToggleBtn.textContent = "☀️";
+      localStorage.setItem("theme", "dark");
+    } else {
+      themeToggleBtn.textContent = "🌙";
+      localStorage.setItem("theme", "light");
+    }
+  });
+}
