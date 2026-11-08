@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Żeglowanie jako hobby</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo">Pod Żaglami</div>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="galeria.html" class="active">Galeria</a>
+        <a href="kontakt.html">Kontakt</a>
+        <button id="theme-toggle" aria-label="Zmień motyw">🌙</button>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section class="gallery-section container">
+        <h1>Galeria zdjęć</h1>
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img
+              src="assets/img/img-bean-2025-1.jpg"
+              alt="Jacht zacumowane na dziko"
+              loading="lazy"
+            />
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="assets/img/img-akz1.jpg"
+              alt="Załoga na pokładzie jachtu płynącym na samym foku"
+              loading="lazy"
+            />
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="assets/img/img-akz-wschod2.jpg"
+              alt="Wschód słońca nad jeziorem"
+              loading="lazy"
+            />
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="assets/img/img-bean-2025-2.jpg"
+              alt="Widok z pokładu na kaczki"
+              loading="lazy"
+            />
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="assets/img/img-akz2.jpg"
+              alt="Jacht na żaglach"
+              loading="lazy"
+            />
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="assets/img/img-akz-port.jpg"
+              alt="Jachty zacumowane na dziko"
+              loading="lazy"
+            />
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="assets/img/img-bean-2025-3.jpg"
+              alt="Widok na żagiel i maszt"
+              loading="lazy"
+            />
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="assets/img/img-bean-2025-4.jpg"
+              alt="Zdjęcie z dziobu zrobione z kokpitu jachtu"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+      </section>
+      <section class="video-section container">
+        <h2>Film z rejsu</h2>
+        <div class="video-wrapper">
+          <video
+            controls
+            poster="assets/img/img-akz-wschod2.jpg"
+            preload="metadata"
+          >
+            <source src="assets/video/sailing-video.mp4" type="video/mp4" />
+            Błąd: Twoja przeglądarka nie obsługuje odtwarzania wideo.
+          </video>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Żeglowanie - sezon 2026 <strong>Jakub Kałużny</strong></p>
+      <div id="live-clock" class="clock-display">Czas rejsowy: --:--:--</div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
