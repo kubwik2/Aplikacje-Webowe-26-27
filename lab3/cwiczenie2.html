@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ćwiczenie 2</title>
+    <link rel="stylesheet" href="./cw2styl.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Generator haseł</h1>
+      <div class="form-group">
+        <label for="minLength">Minimalna długość hasła:</label>
+        <input type="text" id="minLength" value="8" />
+      </div>
+      <div class="form-group">
+        <label for="maxLength">Maksymalna długość hasła:</label>
+        <input type="text" id="maxLength" value="16" />
+      </div>
+      <div class="form-group checkbox-group">
+        <label>
+          <input type="checkbox" id="includeUpper" />
+          Czy hasło ma zawierać wielkie litery?
+        </label>
+      </div>
+      <div class="form-group checkbox-group">
+        <label>
+          <input type="checkbox" id="includeSpecial" />
+          Czy hasło ma zawierać znaki specjalne?
+        </label>
+      </div>
+
+      <button id="generateButton">Wygeneruj hasło</button>
+    </main>
+
+    <script src="cw2.js"></script>
+  </body>
+</html>
