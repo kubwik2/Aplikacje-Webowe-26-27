@@ -1,0 +1,14 @@
+html {
+  background-color: #ddbeaa;
+  height: 100vh;
+}
+
+body {
+  height: 100vh;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+}
