@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ćwiczenie 3</title>
+    <link rel="stylesheet" href="./cw3styl.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Lista produktów</h1>
+
+      <div class="controls">
+        <input type="text" id="filterInput" placeholder="Filtruj produkty..." />
+
+        <select id="sortSelect">
+          <option value="original">Oryginalna kolejność</option>
+          <option value="asc">Rosnąco</option>
+          <option value="desc">Malejąco</option>
+        </select>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Zdjęcie</th>
+            <th>Tytuł</th>
+            <th>Opis</th>
+          </tr>
+        </thead>
+        <tbody id="productsBody"></tbody>
+      </table>
+    </main>
+
+    <script src="cw3.js"></script>
+  </body>
+</html>

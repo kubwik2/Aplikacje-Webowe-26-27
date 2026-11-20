@@ -1,0 +1,56 @@
+html {
+  background-color: #ddbeaa;
+  font-family: sans-serif;
+}
+
+body {
+  margin: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #ffffffdd;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.controls input,
+.controls select {
+  padding: 8px 12px;
+  font-size: 1rem;
+}
+
+.controls input {
+  flex: 1;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #eee;
+}
+
+td img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
