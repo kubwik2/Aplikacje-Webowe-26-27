@@ -56,54 +56,11 @@ function playSound(audio) {
   audio.play().catch(() => {});
 }
 
-let audioCtx = null;
-let musicInterval = null;
-
-function startMusic() {
-  if (!audioCtx) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  }
-  if (audioCtx.state === "suspended") {
-    audioCtx.resume();
-  }
-  stopMusic();
-
-  const melody = [261.63, 293.66, 329.63, 349.23, 392.0, 440.0, 392.0, 329.63];
-  let noteIndex = 0;
-
-  musicInterval = setInterval(() => {
-    if (gameState !== STATES.PLAYING) return;
-    try {
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = "triangle";
-      osc.frequency.value = melody[noteIndex % melody.length];
-      gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(
-        0.0001,
-        audioCtx.currentTime + 0.18,
-      );
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      osc.stop(audioCtx.currentTime + 0.2);
-      noteIndex++;
-    } catch (e) {}
-  }, 220);
-}
-
-function stopMusic() {
-  if (musicInterval) {
-    clearInterval(musicInterval);
-    musicInterval = null;
-  }
-}
-
 let score = 0;
 let lastScore = parseInt(localStorage.getItem("flappy_lastScore"), 10) || 0;
 let top5 = JSON.parse(localStorage.getItem("flappy_top5")) || [];
 let previousRecord = top5.length > 0 ? top5[0] : 0;
-let isNewRecord = false;
+let celebrationTimer = 0;
 
 let frameCount = 0;
 let baseX = 0;
@@ -129,7 +86,6 @@ const PIPE_INTERVAL = 95;
 
 let boost = null;
 let ghostTimer = 0;
-let celebrationTimer = 0;
 
 function resetGame() {
   score = 0;
@@ -142,15 +98,13 @@ function resetGame() {
   boost = null;
   ghostTimer = 0;
   celebrationTimer = 0;
-  isNewRecord = false;
   gameState = STATES.START;
-  stopMusic();
+  playSound(sounds.swoosh);
 }
 
 function flap() {
   if (gameState === STATES.START) {
     gameState = STATES.PLAYING;
-    startMusic();
     bird.vy = bird.jump;
     playSound(sounds.wing);
   } else if (gameState === STATES.PLAYING) {
@@ -305,18 +259,15 @@ function update() {
 }
 
 function triggerCrash() {
-  stopMusic();
   playSound(sounds.hit);
   gameState = STATES.FALLING;
   bird.vy = 2;
 }
 
 function triggerGroundHit() {
-  stopMusic();
   playSound(sounds.die);
 
   if (score > previousRecord && score > 0) {
-    isNewRecord = true;
     previousRecord = score;
     saveScore(score);
     gameState = STATES.CELEBRATING;
@@ -336,10 +287,10 @@ function drawBirdSprite() {
   ctx.rotate(bird.rotation);
 
   if (ghostTimer > 0) {
-    ctx.shadowBlur = 12;
+    ctx.shadowBlur = 10;
     ctx.shadowColor = "#ffd700";
     if (Math.floor(frameCount / 4) % 2 === 0) {
-      ctx.globalAlpha = 0.5;
+      ctx.globalAlpha = 0.6;
     }
   }
 
@@ -405,7 +356,7 @@ function draw() {
   if (boost && !boost.collected) {
     ctx.save();
     ctx.fillStyle = "#ffd700";
-    ctx.strokeStyle = "#fff";
+    ctx.strokeStyle = "#ffffff";
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.arc(
@@ -418,7 +369,7 @@ function draw() {
     ctx.fill();
     ctx.stroke();
 
-    ctx.fillStyle = "#fff";
+    ctx.fillStyle = "#ffffff";
     ctx.font = "bold 10px sans-serif";
     ctx.textAlign = "center";
     ctx.fillText("★", boost.x + boost.size / 2, boost.y + boost.size / 2 + 3.5);
